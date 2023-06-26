@@ -10,4 +10,5 @@ class Player:
         
         self.destination_cards = []
 
-    def 
+    def verify(self):
+        pass
