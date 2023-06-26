@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class CardColors(Enum):
     PURPLE: 1
     BLUE: 2

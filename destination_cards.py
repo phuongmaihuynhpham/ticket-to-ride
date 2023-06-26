@@ -3,7 +3,7 @@ class DestinationCard:
         self.end_cities = end_cities
         self.points = points
         self.owner = None
-    
+
     def set_owner(self, player):
         self.owner = player
 
