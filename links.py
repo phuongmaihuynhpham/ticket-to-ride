@@ -7,3 +7,6 @@ class Link:
 
     def set_owner(self, player):
         self.owner = player
+
+    def place_trains(self, player):
+        pass
