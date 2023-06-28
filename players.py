@@ -19,6 +19,8 @@ class Player:
     def add_player_card(self, color1, color2):
         self.player_cards[color1] += 1
         self.player_cards[color2] += 1
+        return True
 
     def add_destination_cards(self, dest_card):
         self.destination_cards.append(dest_card)
+        return True

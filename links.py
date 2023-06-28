@@ -1,10 +1,14 @@
-from card_colors import *
+from card_colors import CardColors
+
 
 class Link:
-    def __init__(self, connecting_cities, length, color) -> None:
+    def __init__(self, connecting_cities, color, length) -> None:
         self.connecting_cities = connecting_cities
-        self.length = length
+        self.connecting_cities[0].connected_links[self.connecting_cities[0].name] = self
+        self.connecting_cities[1].connected_links[self.connecting_cities[1].name] = self
+
         self.color = color
+        self.length = length
         self.owner = None
 
     def set_owner(self, player):
@@ -13,13 +17,14 @@ class Link:
     def place_trains(self, player):
         if self.owner:
             return False
-        
-        if self.color is None: # TODO: how to convert String to CardColors?
-            color_string = input("Which train's color do you want to use? Note that you must have enough cards of that color to build the train.")
-            link_color = color_string
+
+        if self.color is None:  # TODO: how to convert String to CardColors?
+            color_string = input("Which train's color do you want to use? Note that you must \
+                                 have enough cards of that color to build the train.")
+            link_color = CardColors[color_string.upper()]
         else:
             link_color = self.color
-        
+
         rainbow_num = player.player_cards[CardColors.RAINBOW]
         train_color_num = player.player_cards[link_color]
 
