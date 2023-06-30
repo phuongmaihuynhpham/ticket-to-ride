@@ -16,6 +16,9 @@ class Player:
             return self.color == other.color
         return False
 
+    def __str__(self):
+        pass
+
     def add_player_card(self, color1, color2=None):
         self.player_cards[color1] += 1
         if not color2:

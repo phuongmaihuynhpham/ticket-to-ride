@@ -9,3 +9,6 @@ class DestinationCard:
 
     def verify(self):
         return self.end_cities[0].search(self.end_cities[1], self.owner)
+
+    def __str__(self):
+        pass

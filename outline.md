@@ -1,9 +1,9 @@
 ## cities
 
-## links
+## routes
 - can have more than 1
 - variable lengths
-- each link can only be occupied by one player
+- each route can only be occupied by one player
  
 ## player cards
 - many colors, including rainbow
