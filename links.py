@@ -1,5 +1,15 @@
 from card_colors import CardColors
 
+LINK_POINTS = {
+    1: 1,
+    2: 2,
+    3: 4,
+    4: 7,
+    5: 10,
+    6: 15,
+    7: 18
+}
+
 
 class Link:
     def __init__(self, connecting_cities, color, length) -> None:
@@ -9,6 +19,7 @@ class Link:
 
         self.color = color
         self.length = length
+        self.points = LINK_POINTS[self.length]
         self.owner = None
 
     def set_owner(self, player):
@@ -16,12 +27,19 @@ class Link:
 
     def place_trains(self, player):
         if self.owner:
+            print("This Link is already occupied. Please try again.")
             return False
 
-        if self.color is None:  # TODO: how to convert String to CardColors?
-            color_string = input("Which train's color do you want to use? Note that you must \
+        if self.color is None:
+            color_string = input("Which card color do you want to use? Note that you must \
                                  have enough cards of that color to build the train.")
-            link_color = CardColors[color_string.upper()]
+
+            if color_string.upper() in CardColors:
+                link_color = CardColors[color_string.upper()]
+            else:
+                print("This is not a valid color. Please try again.")
+                return False
+
         else:
             link_color = self.color
 
@@ -31,14 +49,18 @@ class Link:
         if player.train >= self.length:
             if train_color_num >= self.length:
                 self.set_owner(player)
-                player.train -= self.length
-                player.player_cards[link_color] -= self.length
+                player.use_trains(self.length)
+                player.use_player_cards(link_color, self.length)
+                player.earn_points(self.points)
                 return True
-            else:
-                if train_color_num + rainbow_num >= self.length:
-                    self.set_owner(player)
-                    player.train -= self.length
-                    player.player_cards[CardColors.RAINBOW] -= (self.length - train_color_num)
-                    player.player_cards[link_color] = 0
-                    return True
+
+            elif train_color_num + rainbow_num >= self.length:
+                self.set_owner(player)
+                player.use_trains(self.length)
+                player.use_player_cards(CardColors.RAINBOW, self.length - train_color_num)
+                player.use_player_cards(link_color, train_color_num)
+                player.earn_points(self.points)
+                return True
+
+        print("You do not have enough cards or trains remaining to place trains on this Link. Please try again.")
         return False
