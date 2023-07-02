@@ -37,3 +37,7 @@ class Player:
 
     def earn_points(self, num_points):
         self.points += num_points
+
+    def print_state(self):
+        # TODO: implement print_state
+        pass
