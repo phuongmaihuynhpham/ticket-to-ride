@@ -1,5 +1,6 @@
 from card_colors import CardColors
 
+# points for each route length
 ROUTE_POINTS = {
     1: 1,
     2: 2,

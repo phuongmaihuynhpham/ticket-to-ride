@@ -19,3 +19,5 @@
 ## players
 - keep track of what cards you have and how many trains you have left
 - can discard cards to build trains
+
+## end game condition

@@ -70,7 +70,8 @@ class GameManager:
         print("Note that for your second card, you must not choose a RAINBOW card from the available player cards.")
         second_card_response = self.pick_player_card()
 
-        while not second_card_response["success"] or (not second_card_response["deck"] and second_card_response["color"] == CardColors.RAINBOW):
+        while not second_card_response["success"] or (not second_card_response["deck"]
+                                                      and second_card_response["color"] == CardColors.RAINBOW):
             if second_card_response["success"]:
                 print("You may not choose a RAINBOW card from the available player cards "
                       "as a second card. Please pick another card.")

@@ -7,5 +7,4 @@ class City:
         self.connected_routes = routes
 
     def search(self, target_city, player):
-        # graph search algorithm
         pass
